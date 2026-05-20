@@ -62,20 +62,67 @@ def raz_pay(request, amount):
 
 
 
+# def userpayment_post(request):
+
+#     name = request.session.get('name')
+#     email = request.session.get('email')
+#     phone = request.session.get('phone')
+#     address = request.session.get('address')
+#     quantity = request.session.get('quantity')  
+
+#     subject = "ECOMONKS Order Confirmation"
+
+#     message = f"""
+# Hello {name},
+
+# Your payment was successful.
+
+# Order Details:
+
+# Name: {name}
+# Phone: {phone}
+# Address: {address}
+# Quantity: {quantity}
+
+# Thank you for ordering Edible Karpooram from ECOMONKS.
+# """
+    
+#     server = smtplib.SMTP('smtp.gmail.com', 587)
+#     server.starttls()
+#     server.login("leagaladvisorteam@gmail.com", "eugnxtyylwtqwlav") 
+#     to = email
+#     subject = "Test Email"
+#     body = message
+#     msg = f"Subject: {subject}\n\n{body}"
+#     server.sendmail("leagaladvisorteam@gmail.com", to, msg)  
+#     server.quit()
+
+
+#     return HttpResponse(
+#         "<script>alert('Payment Successful & Email Sent');window.location='/'</script>"
+#     )
+
 def userpayment_post(request):
 
-    name = request.session.get('name')
-    email = request.session.get('email')
-    phone = request.session.get('phone')
-    address = request.session.get('address')
-    quantity = request.session.get('quantity')  
+    if request.method == "POST":
 
-    subject = "ECOMONKS Order Confirmation"
+        payment_id = request.POST.get("payment_id")
 
-    message = f"""
+        name = request.session.get('name')
+        email = request.session.get('email')
+        phone = request.session.get('phone')
+        address = request.session.get('address')
+        quantity = request.session.get('quantity')
+
+        if not email:
+            return HttpResponse("Email not found")
+
+        message = f"""
 Hello {name},
 
 Your payment was successful.
+
+Payment ID: {payment_id}
 
 Order Details:
 
@@ -84,24 +131,37 @@ Phone: {phone}
 Address: {address}
 Quantity: {quantity}
 
-Thank you for ordering Edible Karpooram from ECOMONKS.
+Thank you for ordering from ECOMONKS.
 """
-    
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login("leagaladvisorteam@gmail.com", "eugnxtyylwtqwlav") 
-    to = email
-    subject = "Test Email"
-    body = message
-    msg = f"Subject: {subject}\n\n{body}"
-    server.sendmail("leagaladvisorteam@gmail.com", to, msg)  
-    server.quit()
 
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
 
-    return HttpResponse(
-        "<script>alert('Payment Successful & Email Sent');window.location='/'</script>"
-    )
+        server.login(
+            "leagaladvisorteam@gmail.com",
+            "eugnxtyylwtqwlav"
+        )
 
+        subject = "ECOMONKS Order Confirmation"
+
+        msg = f"Subject: {subject}\n\n{message}"
+
+        server.sendmail(
+            "leagaladvisorteam@gmail.com",
+            email,
+            msg
+        )
+
+        server.quit()
+
+        return HttpResponse("""
+            <script>
+                alert('Payment Successful');
+                window.location='/';
+            </script>
+        """)
+
+    return HttpResponse("Invalid Request")
 
 
 
