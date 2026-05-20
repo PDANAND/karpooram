@@ -64,11 +64,11 @@ def raz_pay(request, amount):
 
 def userpayment_post(request):
 
-    name = request.session.get('name', 'Customer')
-    email = request.session.get('email', '')
-    phone = request.session.get('phone', '')
-    address = request.session.get('address', '')
-    quantity = request.session.get('quantity', '')
+    name = request.session.get('name')
+    email = request.session.get('email')
+    phone = request.session.get('phone')
+    address = request.session.get('address')
+    quantity = request.session.get('quantity')  
 
     subject = "ECOMONKS Order Confirmation"
 
@@ -94,7 +94,7 @@ Thank you for ordering Edible Karpooram from ECOMONKS.
     subject = "Test Email"
     body = message
     msg = f"Subject: {subject}\n\n{body}"
-    server.sendmail("s@gmail.com", to, msg)  
+    server.sendmail("leagaladvisorteam@gmail.com", to, msg)  
     server.quit()
 
 
