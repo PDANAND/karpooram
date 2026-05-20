@@ -51,9 +51,16 @@
 <button id="pay-button">Proceed to payment</button>
 
 <form id="payment-form" action="/userpayment_post/" method="POST">
+
     {% csrf_token %}
 
     <input type="hidden" name="payment_id" id="payment_id">
+
+    <input type="hidden" name="name" value="{{ name }}">
+    <input type="hidden" name="email" value="{{ email }}">
+    <input type="hidden" name="phone" value="{{ phone }}">
+    <input type="hidden" name="address" value="{{ address }}">
+    <input type="hidden" name="quantity" value="{{ quantity }}">
 
 </form>
 

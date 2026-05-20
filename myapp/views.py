@@ -14,6 +14,20 @@ def homepage(request):
 
 
 
+# def order_post(request):
+
+#     name = request.POST['name']
+#     email = request.POST['email']
+#     phone = request.POST['phone']
+#     address = request.POST['address']
+#     quantity = request.POST['quantity']
+
+#     amount = 500 * 100
+
+#     request.session.flush()
+
+#     return redirect('/raz_pay/' + str(amount))
+
 def order_post(request):
 
     name = request.POST['name']
@@ -24,9 +38,18 @@ def order_post(request):
 
     amount = 500 * 100
 
-    request.session.flush()
+    return render(request, 'pp.html', {
 
-    return redirect('/raz_pay/' + str(amount))
+        'name': name,
+        'email': email,
+        'phone': phone,
+        'address': address,
+        'quantity': quantity,
+        'amount': amount,
+        'razorpay_api_key': 'rzp_test_MJOAVy77oMVaYv',
+        'currency': 'INR'
+
+    })
 
 
 def raz_pay(request, amount):
@@ -106,13 +129,12 @@ def userpayment_post(request):
 
     if request.method == "POST":
 
-        payment_id = request.POST.get("payment_id")
-
-        name = request.session.get('name')
-        email = request.session.get('email')
-        phone = request.session.get('phone')
-        address = request.session.get('address')
-        quantity = request.session.get('quantity')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        quantity = request.POST.get('quantity')
+        payment_id = request.POST.get('payment_id')
 
         if not email:
             return HttpResponse("Email not found")
