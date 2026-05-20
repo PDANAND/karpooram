@@ -24,7 +24,7 @@ def order_post(request):
 
     amount = 500 * 100
 
-    return redirect('/myapp/raz_pay/' + str(amount))
+    return redirect('/raz_pay/' + str(amount))
 
 
 def raz_pay(request, amount):
@@ -97,7 +97,7 @@ Thank you for ordering Edible Karpooram from ECOMONKS.
 
 
     return HttpResponse(
-        "<script>alert('Payment Successful & Email Sent');window.location='/myapp/homepage/'</script>"
+        "<script>alert('Payment Successful & Email Sent');window.location='/'</script>"
     )
 
 
@@ -145,7 +145,7 @@ Thank you for staying connected with us.
             server.quit()
 
             return HttpResponse(
-                "<script>alert('Subscribed Successfully');window.location='/myapp/homepage/'</script>"
+                "<script>alert('Subscribed Successfully');window.location='homepage/'</script>"
             )
 
         except Exception as e:
