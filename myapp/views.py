@@ -145,7 +145,7 @@ Thank you for staying connected with us.
             server.quit()
 
             return HttpResponse(
-                "<script>alert('Subscribed Successfully');window.location='homepage/'</script>"
+                "<script>alert('Subscribed Successfully');window.location='/'</script>"
             )
 
         except Exception as e:
