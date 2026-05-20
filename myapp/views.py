@@ -64,11 +64,11 @@ def raz_pay(request, amount):
 
 def userpayment_post(request):
 
-    name = request.session['name']
-    email = request.session['email']
-    phone = request.session['phone']
-    address = request.session['address']
-    quantity = request.session['quantity']
+    name = request.session.get('name', 'Customer')
+    email = request.session.get('email', '')
+    phone = request.session.get('phone', '')
+    address = request.session.get('address', '')
+    quantity = request.session.get('quantity', '')
 
     subject = "ECOMONKS Order Confirmation"
 
