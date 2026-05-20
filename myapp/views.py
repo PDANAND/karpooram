@@ -4,6 +4,9 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.conf import settings
+from django.shortcuts import render
+from django.http import HttpResponse
+import smtplib
 # Create your views here.
 
 def homepage(request):
@@ -96,3 +99,56 @@ Thank you for ordering Edible Karpooram from ECOMONKS.
     return HttpResponse(
         "<script>alert('Payment Successful & Email Sent');window.location='/myapp/homepage/'</script>"
     )
+
+
+
+
+def emailenquiry(request):
+
+    if request.method == "POST":
+
+        email = request.POST.get('email')
+
+        subject = "ECOMONKS Subscription"
+
+        message = f"""
+Hello,
+
+Thank you for subscribing to ECOMONKS.
+
+You will now receive:
+- Product updates
+- Offers
+- Latest notifications
+
+Thank you for staying connected with us.
+"""
+
+        try:
+            server = smtplib.SMTP('smtp.gmail.com', 587)
+            server.starttls()
+
+            # Gmail App Password
+            server.login(
+                "leagaladvisorteam@gmail.com",
+                "eugnxtyylwtqwlav"
+            )
+
+            msg = f"Subject: {subject}\n\n{message}"
+
+            server.sendmail(
+                "yourgmail@gmail.com",
+                email,
+                msg
+            )
+
+            server.quit()
+
+            return HttpResponse(
+                "<script>alert('Subscribed Successfully');window.location='/myapp/homepage/'</script>"
+            )
+
+        except Exception as e:
+            return HttpResponse(f"Error: {e}")
+
+    return HttpResponse("Invalid Request")
