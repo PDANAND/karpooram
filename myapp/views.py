@@ -16,13 +16,15 @@ def homepage(request):
 
 def order_post(request):
 
-    request.session['name'] = request.POST['name']
-    request.session['email'] = request.POST['email']
-    request.session['phone'] = request.POST['phone']
-    request.session['address'] = request.POST['address']
-    request.session['quantity'] = request.POST['quantity']
+    name = request.POST['name']
+    email = request.POST['email']
+    phone = request.POST['phone']
+    address = request.POST['address']
+    quantity = request.POST['quantity']
 
     amount = 500 * 100
+
+    request.session.flush()
 
     return redirect('/raz_pay/' + str(amount))
 
