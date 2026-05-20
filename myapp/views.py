@@ -1,0 +1,98 @@
+import smtplib
+from django.shortcuts import render
+from django.shortcuts import redirect
+from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.conf import settings
+# Create your views here.
+
+def homepage(request):
+    return render(request,'homeindex.html')
+
+
+
+def order_post(request):
+
+    request.session['name'] = request.POST['name']
+    request.session['email'] = request.POST['email']
+    request.session['phone'] = request.POST['phone']
+    request.session['address'] = request.POST['address']
+    request.session['quantity'] = request.POST['quantity']
+
+    amount = 500 * 100
+
+    return redirect('/myapp/raz_pay/' + str(amount))
+
+
+def raz_pay(request, amount):
+
+    import razorpay
+
+    razorpay_api_key = "rzp_test_MJOAVy77oMVaYv"
+    razorpay_secret_key = "MvUZ03MPzLq3lkvMneYECQsk"
+
+    razorpay_client = razorpay.Client(
+        auth=(razorpay_api_key, razorpay_secret_key)
+    )
+
+    amount = float(amount)
+
+    order_data = {
+        'amount': amount,
+        'currency': 'INR',
+        'receipt': 'order_rcptid_11',
+        'payment_capture': '1',
+    }
+
+    order = razorpay_client.order.create(data=order_data)
+
+    return render(request, 'pp.html', {
+
+        'razorpay_api_key': razorpay_api_key,
+        'amount': order_data['amount'],
+        'currency': order_data['currency'],
+        'order_id': order['id']
+
+    })
+
+
+
+def userpayment_post(request):
+
+    name = request.session['name']
+    email = request.session['email']
+    phone = request.session['phone']
+    address = request.session['address']
+    quantity = request.session['quantity']
+
+    subject = "ECOMONKS Order Confirmation"
+
+    message = f"""
+Hello {name},
+
+Your payment was successful.
+
+Order Details:
+
+Name: {name}
+Phone: {phone}
+Address: {address}
+Quantity: {quantity}
+
+Thank you for ordering Edible Karpooram from ECOMONKS.
+"""
+    
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login("leagaladvisorteam@gmail.com", "eugnxtyylwtqwlav") 
+    to = email
+    subject = "Test Email"
+    body = message
+    msg = f"Subject: {subject}\n\n{body}"
+    server.sendmail("s@gmail.com", to, msg)  
+    server.quit()
+
+
+    return HttpResponse(
+        "<script>alert('Payment Successful & Email Sent');window.location='/myapp/homepage/'</script>"
+    )
