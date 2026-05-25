@@ -23,7 +23,6 @@
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -35,7 +34,6 @@
             line-height: 1.7;
         }
 
-        /* ── UTILITY ── */
         .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 20px; }
         .section-pad { padding: 80px 0; }
         @media(max-width:768px){ .section-pad{ padding:56px 0; } }
@@ -53,7 +51,6 @@
             transition: background .3s;
         }
         .navbar.scrolled { background: rgba(43,24,16,0.99); }
-
         .navbar-brand {
             display: flex; align-items: center; gap: 12px;
             text-decoration: none;
@@ -69,7 +66,6 @@
             color: var(--amber); letter-spacing: 3px;
             text-transform: uppercase;
         }
-
         .nav-links {
             display: flex; align-items: center; gap: 4px;
             list-style: none;
@@ -84,8 +80,6 @@
             transition: color .2s, background .2s;
         }
         .nav-links a:hover, .nav-links a.active { color: var(--amber); }
-
-        /* Dropdown */
         .nav-item { position: relative; }
         .nav-item:hover .dropdown { display: block; }
         .dropdown {
@@ -105,8 +99,6 @@
             border-radius: 0;
         }
         .dropdown a:hover { background: rgba(200,135,58,0.15); color: var(--amber); }
-
-        /* Hamburger */
         .hamburger {
             display: none; flex-direction: column; gap: 5px;
             cursor: pointer; padding: 4px;
@@ -120,8 +112,6 @@
         .hamburger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
         .hamburger.open span:nth-child(2){ opacity: 0; }
         .hamburger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
-
-        /* Mobile nav */
         .mobile-nav {
             display: none; position: fixed;
             top: 70px; left: 0; right: 0;
@@ -143,8 +133,7 @@
         }
         .mobile-nav a:last-child { border-bottom: none; }
         .mobile-nav a:hover { color: var(--amber); }
-
-        @media(max-width:900px){ .nav-links, .nav-links { display: none; } .hamburger{ display: flex; } }
+        @media(max-width:900px){ .nav-links { display: none; } .hamburger{ display: flex; } }
 
         /* ── HERO ── */
         .hero {
@@ -161,18 +150,10 @@
         .hero-slide.active { opacity: 1; }
         .hero-slide::after {
             content: ''; position: absolute; inset: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(43,24,16,0.82) 0%,
-                rgba(43,24,16,0.55) 50%,
-                rgba(43,24,16,0.72) 100%
-            );
+            background: linear-gradient(135deg,rgba(43,24,16,0.82) 0%,rgba(43,24,16,0.55) 50%,rgba(43,24,16,0.72) 100%);
         }
-
-        /* Placeholder slides since images are server-side */
         .slide-1 { background: linear-gradient(135deg,#2B1810 0%,#6B3A1F 60%,#2B1810 100%); }
         .slide-2 { background: linear-gradient(135deg,#1A0F08 0%,#7A4520 60%,#1A0F08 100%); }
-
         .hero-content {
             position: relative; z-index: 2;
             text-align: center;
@@ -236,7 +217,6 @@
             display: inline-block;
         }
         .btn-outline:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
-
         .slide-dots {
             position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
             z-index: 3; display: flex; gap: 8px;
@@ -247,7 +227,6 @@
             cursor: pointer; transition: all .3s;
         }
         .dot.active { width: 28px; background: var(--amber); }
-
         @keyframes fadeUp{ from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none} }
 
         /* ── DIVIDER ── */
@@ -287,11 +266,9 @@
         }
         .about-img-wrap img {
             width: 100%; height: 480px; object-fit: cover;
-            display: block;
-            border-radius: 4px;
+            display: block; border-radius: 4px;
         }
         @media(max-width:960px){ .about-img-wrap img{ height: 300px; } }
-
         .about-img-badge {
             position: absolute; bottom: -18px; right: -18px;
             width: 100px; height: 100px;
@@ -306,12 +283,7 @@
         .about-img-badge .badge-year { font-size: 1.4rem; font-weight: 600; line-height: 1; }
         .about-img-badge .badge-text { font-size: 0.6rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
         @media(max-width:960px){ .about-img-badge{ display: none; } }
-
-        .about-text p {
-            color: var(--muted);
-            font-size: 0.97rem; line-height: 1.85;
-            margin-bottom: 18px;
-        }
+        .about-text p { color: var(--muted); font-size: 0.97rem; line-height: 1.85; margin-bottom: 18px; }
         .checklist { list-style: none; margin-top: 20px; }
         .checklist li {
             display: flex; align-items: center; gap: 10px;
@@ -326,30 +298,16 @@
         /* ── SPECIALITIES ── */
         .spec { background: var(--cream-dk); }
         .spec-header { text-align: center; margin-bottom: 56px; }
-        .spec-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
+        .spec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
         @media(max-width:640px){ .spec-grid{ grid-template-columns: 1fr; } }
-
         .spec-card {
             background: var(--white);
-            border-radius: 8px;
-            padding: 28px;
+            border-radius: 8px; padding: 28px;
             display: flex; gap: 20px; align-items: flex-start;
             border: 1px solid rgba(200,135,58,0.12);
             transition: box-shadow .25s, transform .25s;
         }
-        .spec-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(43,24,16,0.12);
-        }
-        .spec-img {
-            width: 90px; height: 90px; flex-shrink: 0;
-            border-radius: 6px; overflow: hidden;
-        }
-        .spec-img img { width: 100%; height: 100%; object-fit: cover; }
+        .spec-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(43,24,16,0.12); }
         .spec-icon-wrap {
             width: 90px; height: 90px; flex-shrink: 0;
             background: linear-gradient(135deg, var(--amber), var(--amber-lt));
@@ -367,17 +325,11 @@
         /* ── VISION STRIP ── */
         .vision-strip {
             background: linear-gradient(135deg, var(--brown) 0%, var(--brown-md) 100%);
-            padding: 60px 20px;
-            text-align: center;
+            padding: 60px 20px; text-align: center;
         }
         .vision-strip .section-label { color: var(--amber-lt); }
         .vision-strip .section-heading { color: var(--white); }
-        .vision-grid {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 40px;
-            margin-top: 50px;
-        }
+        .vision-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; margin-top: 50px; }
         @media(max-width:768px){ .vision-grid{ grid-template-columns: 1fr; gap: 28px; } }
         .vision-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
         .vision-icon {
@@ -387,106 +339,75 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 1.4rem; color: var(--amber);
         }
-        .vision-item h5 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem; font-weight: 600;
-            color: var(--white);
-        }
+        .vision-item h5 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--white); }
         .vision-item p { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 220px; }
 
         /* ── ORDER ── */
         .order-section { background: var(--cream); }
-        .order-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px; align-items: start;
-        }
+        .order-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
         @media(max-width:820px){ .order-wrapper{ grid-template-columns: 1fr; gap: 40px; } }
-
         .order-info .section-heading { margin-bottom: 20px; }
         .order-info p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 24px; }
         .order-perks { list-style: none; }
         .order-perks li {
             display: flex; gap: 12px; align-items: flex-start;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
             font-size: 0.93rem; color: var(--text);
         }
         .order-perks li:last-child { border: none; }
         .order-perks li i { color: var(--amber); margin-top: 3px; font-size: 0.85rem; }
-
         .order-form {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 36px;
+            background: var(--white); border-radius: 12px; padding: 36px;
             border: 1px solid rgba(200,135,58,0.15);
             box-shadow: 0 4px 40px rgba(43,24,16,0.07);
         }
         .order-form h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.6rem; font-weight: 600;
-            color: var(--brown); margin-bottom: 24px;
-            text-align: center;
+            color: var(--brown); margin-bottom: 24px; text-align: center;
         }
         .form-field { margin-bottom: 16px; }
         .form-field input,
         .form-field select,
         .form-field textarea {
-            width: 100%;
-            padding: 13px 16px;
+            width: 100%; padding: 13px 16px;
             font-family: 'Jost', sans-serif;
-            font-size: 0.92rem;
-            color: var(--text);
+            font-size: 0.92rem; color: var(--text);
             background: var(--cream);
             border: 1px solid rgba(200,135,58,0.2);
-            border-radius: 6px;
-            outline: none;
-            transition: border-color .2s;
-            appearance: none;
+            border-radius: 6px; outline: none;
+            transition: border-color .2s; appearance: none;
         }
-        .form-field input:focus,
-        .form-field select:focus { border-color: var(--amber); }
+        .form-field input:focus, .form-field select:focus { border-color: var(--amber); }
         .form-field input::placeholder { color: var(--muted); }
-        .form-field select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23C8873A' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+        .form-field select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23C8873A' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
+        }
         .btn-submit {
-            width: 100%;
-            padding: 14px;
-            background: var(--amber);
-            color: var(--brown);
+            width: 100%; padding: 14px;
+            background: var(--amber); color: var(--brown);
             font-family: 'Jost', sans-serif;
             font-size: 0.85rem; font-weight: 600;
             letter-spacing: 2px; text-transform: uppercase;
             border: none; border-radius: 6px;
-            cursor: pointer;
-            transition: background .2s, transform .2s;
-            margin-top: 8px;
+            cursor: pointer; transition: background .2s, transform .2s; margin-top: 8px;
         }
         .btn-submit:hover { background: var(--amber-lt); transform: translateY(-2px); }
 
         /* ── FOOTER ── */
-        .footer {
-            background: var(--brown);
-            color: rgba(255,255,255,0.7);
-            padding: 64px 0 0;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
-            gap: 48px;
-        }
+        .footer { background: var(--brown); color: rgba(255,255,255,0.7); padding: 64px 0 0; }
+        .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.4fr; gap: 48px; }
         @media(max-width:900px){ .footer-grid{ grid-template-columns: 1fr 1fr; gap: 36px; } }
         @media(max-width:560px){ .footer-grid{ grid-template-columns: 1fr; gap: 28px; } }
-
         .footer-col h4 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.05rem; font-weight: 600;
             color: var(--white); margin-bottom: 20px;
             letter-spacing: 2px; text-transform: uppercase;
         }
-        .footer-brand {
-            display: flex; align-items: center; gap: 10px;
-            margin-bottom: 16px;
-        }
+        .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
         .footer-brand img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--amber); }
         .footer-brand span {
             font-family: 'Cormorant Garamond', serif;
@@ -494,56 +415,39 @@
             color: var(--amber); letter-spacing: 3px;
         }
         .footer-col p { font-size: 0.87rem; line-height: 1.8; margin-bottom: 20px; }
-        .footer-contact-item {
-            display: flex; gap: 10px; align-items: flex-start;
-            font-size: 0.87rem; margin-bottom: 12px;
-        }
+        .footer-contact-item { display: flex; gap: 10px; align-items: flex-start; font-size: 0.87rem; margin-bottom: 12px; }
         .footer-contact-item i { color: var(--amber); margin-top: 3px; flex-shrink: 0; }
-
         .footer-hours dt { font-size: 0.82rem; font-weight: 500; color: var(--white); letter-spacing: 1px; text-transform: uppercase; margin-top: 10px; }
         .footer-hours dd { font-size: 0.87rem; margin: 2px 0 0 0; }
-
         .social-links { display: flex; gap: 10px; margin-top: 4px; }
         .social-link {
             width: 38px; height: 38px;
-            border: 1px solid rgba(200,135,58,0.3);
-            border-radius: 50%;
+            border: 1px solid rgba(200,135,58,0.3); border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem;
             transition: background .2s, border-color .2s, color .2s;
         }
         .social-link:hover { background: var(--amber); border-color: var(--amber); color: var(--brown); }
-
         .footer-sub-form { display: flex; gap: 0; margin-top: 14px; }
         .footer-sub-form input {
             flex: 1; padding: 11px 14px;
-            font-family: 'Jost', sans-serif;
-            font-size: 0.85rem; color: var(--white);
+            font-family: 'Jost', sans-serif; font-size: 0.85rem; color: var(--white);
             background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(200,135,58,0.25);
-            border-right: none;
-            border-radius: 4px 0 0 4px;
-            outline: none;
+            border: 1px solid rgba(200,135,58,0.25); border-right: none;
+            border-radius: 4px 0 0 4px; outline: none;
         }
         .footer-sub-form input::placeholder { color: rgba(255,255,255,0.4); }
         .footer-sub-form button {
-            padding: 11px 18px;
-            background: var(--amber); border: none;
+            padding: 11px 18px; background: var(--amber); border: none;
             color: var(--brown); font-size: 0.8rem; font-weight: 600;
-            cursor: pointer; border-radius: 0 4px 4px 0;
-            transition: background .2s;
+            cursor: pointer; border-radius: 0 4px 4px 0; transition: background .2s;
         }
         .footer-sub-form button:hover { background: var(--amber-lt); }
-
         .footer-bottom {
-            margin-top: 48px;
-            padding: 20px 0;
+            margin-top: 48px; padding: 20px 0;
             border-top: 1px solid rgba(255,255,255,0.08);
             display: flex; align-items: center; justify-content: space-between;
-            flex-wrap: wrap; gap: 12px;
-            font-size: 0.82rem;
+            flex-wrap: wrap; gap: 12px; font-size: 0.82rem;
         }
         .footer-bottom span { color: var(--amber); }
 
@@ -551,8 +455,7 @@
         .back-top {
             position: fixed; bottom: 24px; right: 24px; z-index: 900;
             width: 44px; height: 44px;
-            background: var(--amber);
-            color: var(--brown);
+            background: var(--amber); color: var(--brown);
             border: none; border-radius: 50%;
             display: none; align-items: center; justify-content: center;
             cursor: pointer; font-size: 1rem;
@@ -562,13 +465,65 @@
         .back-top:hover { background: var(--amber-lt); transform: translateY(-3px); }
         .back-top.visible { display: flex; }
 
-        /* ── IMAGE FALLBACK ── */
-        .img-placeholder {
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, var(--brown-md), var(--amber));
-            display: flex; align-items: center; justify-content: center;
-            color: var(--white); font-size: 2rem; opacity: 0.6;
+        /* ── ORDER POPUP (Social Proof) ── */
+        #em-popup {
+            position: fixed;
+            bottom: 24px; left: 24px;
+            z-index: 9999;
+            font-family: 'Jost', sans-serif;
         }
+        .em-toast {
+            display: flex; align-items: center; gap: 14px;
+            background: #ffffff;
+            border: 1px solid rgba(200,135,58,0.25);
+            border-left: 4px solid #C8873A;
+            border-radius: 10px;
+            padding: 14px 36px 14px 14px;
+            box-shadow: 0 8px 32px rgba(43,24,16,0.18);
+            width: 310px;
+            max-width: 88vw;
+            position: relative;
+            animation: emUp .45s cubic-bezier(.22,.68,0,1.2) forwards;
+        }
+        .em-toast.em-hide {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity .4s, transform .4s;
+        }
+        @keyframes emUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .em-av {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: linear-gradient(135deg, #C8873A, #E8B46A);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 15px; font-weight: 600;
+            color: #2B1810; flex-shrink: 0;
+            border: 2px solid rgba(200,135,58,0.4);
+        }
+        .em-body { flex: 1; min-width: 0; }
+        .em-name { font-size: 13.5px; font-weight: 600; color: #2B1810; margin-bottom: 3px; }
+        .em-msg { font-size: 12px; color: #7A5C3E; font-weight: 400; margin-bottom: 4px; line-height: 1.45; }
+        .em-msg strong { font-weight: 600; color: #4A2C1A; }
+        .em-time {
+            font-size: 11px; color: #aaa;
+            display: flex; align-items: center; gap: 5px;
+        }
+        .em-time::before {
+            content: '';
+            display: inline-block; width: 6px; height: 6px;
+            background: #4caf7d; border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .em-close {
+            position: absolute; top: 8px; right: 10px;
+            background: none; border: none;
+            font-size: 14px; color: #bbb;
+            cursor: pointer; line-height: 1; padding: 2px 4px;
+            transition: color .2s;
+        }
+        .em-close:hover { color: #C8873A; }
     </style>
 </head>
 <body>
@@ -579,7 +534,6 @@
         <img src="/static/homepage/img/logo.jpeg" alt="Ecomonks Logo" onerror="this.style.display='none'">
         <span class="brand-name">Ecomonks</span>
     </a>
-
     <ul class="nav-links">
         <li><a href="#" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -594,7 +548,6 @@
         </li>
         <li><a href="#footer">Contact</a></li>
     </ul>
-
     <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
     </button>
@@ -616,17 +569,15 @@
         <div class="hero-slide slide-1 active" style="background-image:url('/static/homepage/img/p2.jpeg')"></div>
         <div class="hero-slide slide-2" style="background-image:url('/static/homepage/img/p3.jpeg')"></div>
     </div>
-
     <div class="hero-content">
         <div class="hero-eyebrow">✦ Divya Bhimseni Karpooram ✦</div>
-        <h1 class="hero-title">Pure <em>Karpooram</em><br>for the Divine</h1>
+        <h1 class="hero-title">Pure <span>Karpooram</span><br>for the Divine</h1>
         <p class="hero-subtitle">Premium Temple Grade Edible Camphor · Crafted for Pooja, Meditation &amp; Spiritual Wellness</p>
         <div class="hero-cta">
             <a href="#order" class="btn-gold">Order Now</a>
             <a href="#about" class="btn-outline">Our Story</a>
         </div>
     </div>
-
     <div class="slide-dots">
         <div class="dot active" data-slide="0"></div>
         <div class="dot" data-slide="1"></div>
@@ -637,7 +588,6 @@
 <section class="about section-pad" id="about">
     <div class="container">
         <div class="about-grid">
-            <!-- Left text -->
             <div class="about-text">
                 <div class="section-label">Our Story</div>
                 <h2 class="section-heading">Serving Since<br><em>2025</em></h2>
@@ -645,8 +595,6 @@
                 <p>Made from premium natural ingredients with no harmful chemicals or synthetic fragrance, our Bhimseni Camphor is ideal for daily pooja, meditation, havan, and aromatherapy.</p>
                 <a href="#order" class="btn-gold" style="margin-top:12px">Make an Order</a>
             </div>
-
-            <!-- Centre image -->
             <div class="about-img-wrap">
                 <img src="/static/homepage/img/_01.png" alt="Pure Karpooram" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22480%22%3E%3Crect fill=%22%234A2C1A%22 width=%22400%22 height=%22480%22/%3E%3Ctext x=%22200%22 y=%22250%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22%23C8873A%22%3E🪔%3C/text%3E%3C/svg%3E'">
                 <div class="about-img-badge">
@@ -654,8 +602,6 @@
                     <span class="badge-text">Est.</span>
                 </div>
             </div>
-
-            <!-- Right checklist -->
             <div>
                 <div class="section-label">Our Vision</div>
                 <h2 class="section-heading">Why <em>Choose</em><br>Ecomonks?</h2>
@@ -753,7 +699,6 @@
                     <li><i class="fa fa-circle-check"></i> Available in 100g, 250g, and 500g packs</li>
                 </ul>
             </div>
-
             <div class="order-form">
                 <h3>Order Now</h3>
                 <form method="post" action="order_post/">
@@ -789,7 +734,6 @@
 <footer class="footer" id="footer">
     <div class="container">
         <div class="footer-grid">
-            <!-- Brand -->
             <div class="footer-col">
                 <div class="footer-brand">
                     <img src="/static/homepage/img/logo.jpeg" alt="Logo" onerror="this.style.display='none'">
@@ -803,8 +747,6 @@
                     <a class="social-link" href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-
-            <!-- Contact -->
             <div class="footer-col">
                 <h4>Contact</h4>
                 <div class="footer-contact-item">
@@ -820,8 +762,6 @@
                     <span>Founder@ecomonks.in</span>
                 </div>
             </div>
-
-            <!-- Hours -->
             <div class="footer-col">
                 <h4>Working Hours</h4>
                 <dl class="footer-hours">
@@ -831,8 +771,6 @@
                     <dd>Closed</dd>
                 </dl>
             </div>
-
-            <!-- Subscribe -->
             <div class="footer-col">
                 <h4>Subscribe</h4>
                 <p>Get updates, offers, and the latest product information straight to your inbox.</p>
@@ -845,7 +783,6 @@
                 </form>
             </div>
         </div>
-
         <div class="footer-bottom">
             <p>Copyright &copy; 2025 <span>ECOMONKS</span>. All Rights Reserved.</p>
             <p>Designed with ❤️ for Pure Edible Karpooram</p>
@@ -857,28 +794,29 @@
     <i class="fa fa-angle-up"></i>
 </button>
 
+<!-- ── ORDER POPUP (Social Proof) ── -->
+<div id="em-popup"></div>
+
 <script>
-    // Navbar scroll
+    /* ── Navbar scroll ── */
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 40);
         document.getElementById('backTop').classList.toggle('visible', window.scrollY > 300);
     });
 
-    // Back to top
+    /* ── Back to top ── */
     document.getElementById('backTop').addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Hamburger
+    /* ── Hamburger ── */
     const ham = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
     ham.addEventListener('click', () => {
         ham.classList.toggle('open');
         mobileNav.classList.toggle('open');
     });
-
-    // Close mobile nav on link click
     mobileNav.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', () => {
             ham.classList.remove('open');
@@ -886,11 +824,10 @@
         });
     });
 
-    // Hero slideshow
+    /* ── Hero slideshow ── */
     const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.dot');
-    let current = 0;
-
+    const dots   = document.querySelectorAll('.dot');
+    let current  = 0;
     function goTo(n) {
         slides[current].classList.remove('active');
         dots[current].classList.remove('active');
@@ -898,20 +835,67 @@
         slides[current].classList.add('active');
         dots[current].classList.add('active');
     }
-
     dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.slide)));
     setInterval(() => goTo(current + 1), 5000);
 
-    // Smooth scroll for anchor links
+    /* ── Smooth scroll ── */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
             const target = document.querySelector(a.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
         });
     });
+
+    /* ── Social Proof Order Popup ── */
+    (function(){
+        const names = ["Suresh","Gokul","Abhi","Arun","Amaya","Sreya","Ammu","Priya",
+                        "Rahul","Nidhi","Vishnu","Kavya","Deepa","Arjun","Meera","Ravi",
+                        "Anand","Divya","Santhosh","Lakshmi"];
+        const packs = ["100g Pack","250g Pack","500g Pack"];
+        const locs  = ["Thrissur","Kochi","Palakkad","Kozhikode","Trivandrum","Kannur",
+                        "Ernakulam","Chennai","Bangalore","Mumbai","Hyderabad","Pune"];
+        const times = ["just now","1 minute ago","2 minutes ago","3 minutes ago","5 minutes ago","moments ago"];
+
+        let idx = 0;
+        const wrap = document.getElementById('em-popup');
+
+        function showPopup() {
+            const name = names[idx % names.length];
+            const pack = packs[Math.floor(Math.random() * packs.length)];
+            const loc  = locs[Math.floor(Math.random()  * locs.length)];
+            const time = times[Math.floor(Math.random() * times.length)];
+            idx++;
+
+            const t = document.createElement('div');
+            t.className = 'em-toast';
+            t.innerHTML =
+                '<div class="em-av">' + name.slice(0,2).toUpperCase() + '</div>' +
+                '<div class="em-body">' +
+                  '<div class="em-name">' + name + ' from ' + loc + '</div>' +
+                  '<div class="em-msg">🛒 Just ordered <strong>' + pack + '</strong> of Bhimseni Karpooram</div>' +
+                  '<div class="em-time">' + time + '</div>' +
+                '</div>' +
+                '<button class="em-close" aria-label="Close">✕</button>';
+
+            t.querySelector('.em-close').addEventListener('click', () => dismiss(t));
+            wrap.innerHTML = '';
+            wrap.appendChild(t);
+
+            setTimeout(() => dismiss(t), 5500);
+        }
+
+        function dismiss(el) {
+            if (!el.parentElement) return;
+            el.classList.add('em-hide');
+            setTimeout(() => { if (el.parentElement) el.remove(); }, 420);
+        }
+
+        /* First popup after 3 seconds, then every 9 seconds */
+        setTimeout(function loop() {
+            showPopup();
+            setTimeout(loop, 9000);
+        }, 3000);
+    })();
 </script>
 </body>
 </html>

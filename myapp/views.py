@@ -10,7 +10,7 @@ import smtplib
 # Create your views here.
 
 def homepage(request):
-    return render(request,'newhome.html')
+    return render(request,'updatehome.html')
 
 
 
