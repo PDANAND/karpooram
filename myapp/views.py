@@ -36,7 +36,7 @@ def order_post(request):
     address = request.POST['address']
     quantity = request.POST['quantity']
 
-    amount = 500 * 100
+    amount = 500 * 10
 
     return render(request, 'pp.html', {
 
@@ -46,7 +46,7 @@ def order_post(request):
         'address': address,
         'quantity': quantity,
         'amount': amount,
-        'razorpay_api_key': 'rzp_test_MJOAVy77oMVaYv',
+        'razorpay_api_key': 'rzp_live_Su35EVyNYFeKCF',
         'currency': 'INR'
 
     })
@@ -56,8 +56,8 @@ def raz_pay(request, amount):
 
     import razorpay
 
-    razorpay_api_key = "rzp_test_MJOAVy77oMVaYv"
-    razorpay_secret_key = "MvUZ03MPzLq3lkvMneYECQsk"
+    razorpay_api_key = "rzp_live_Su35EVyNYFeKCF"
+    razorpay_secret_key = "NQE3JfS6rdlmp8YtHrxF120H"
 
     razorpay_client = razorpay.Client(
         auth=(razorpay_api_key, razorpay_secret_key)
