@@ -36,7 +36,16 @@ def order_post(request):
     address = request.POST['address']
     quantity = request.POST['quantity']
 
-    amount = 500 * 10
+    print(name,email,phone,address,quantity,"fffffffffffffffffff")
+
+    if quantity == "50g":
+        amount = 1 * 100   # Razorpay uses paise
+
+    elif quantity == "200g":
+        amount = 1 * 100
+
+    else:
+        amount = 0
 
     return render(request, 'pp.html', {
 
