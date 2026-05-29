@@ -1,31 +1,22 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "karpooram/wsgi.py",
-            "use": "@vercel/python",
-            "config": {
-                "maxLambdaSize": "15mb",
-                "runtime": "python3.9"
-            }
-        },
-        {
-            "src": "static/**/*",
-            "use": "@vercel/static"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/static/(.*)",
-            "dest": "/static/$1"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "karpooram/wsgi.py"
-        }
-    ],
-    "env": {
-        "DJANGO_SETTINGS_MODULE": "karpooram.settings",
-        "DEBUG": "False"
+  "version": 2,
+  "builds": [
+    {
+      "src": "karpooram/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb"
+      }
     }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "karpooram/wsgi.py"
+    }
+  ]
 }
