@@ -5,7 +5,7 @@
       "src": "karpooram/wsgi.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "15mb"
+        "pythonVersion": "3.12"
       }
     }
   ],
