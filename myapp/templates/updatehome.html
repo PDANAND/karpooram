@@ -6,7 +6,6 @@
     <title>ECOMONKS – Divya Bhimseni Karpooram</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Premium Temple Grade Edible Camphor – Pure, Traditional, Authentic">
-    <!-- Critical: render background immediately, before any CSS loads -->
     <style>body{background:#FDF6EC}.navbar{background:rgba(43,24,16,0.97)}</style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -145,18 +144,16 @@
             min-height: 100vh;
             display: flex; align-items: center; justify-content: center;
             overflow: hidden;
-            background-color: #2B1810; /* prevents white flash before images load */
+            background-color: #2B1810;
         }
         .hero-slides { position: absolute; inset: 0; }
         .hero-slide {
             position: absolute; inset: 0;
             background-size: cover; background-position: center;
             opacity: 0;
-            /* delay transition so it only fires on JS-driven changes, not on load */
             transition: opacity 1.1s ease;
             will-change: opacity;
         }
-        /* First slide visible immediately — no flash on load */
         .hero-slide:first-child { opacity: 1; }
         .hero-slide.active { opacity: 1; }
         .hero-slide:not(.active):not(:first-child) { opacity: 0; }
@@ -164,7 +161,6 @@
             content: ''; position: absolute; inset: 0;
             background: linear-gradient(135deg,rgba(43,24,16,0.82) 0%,rgba(43,24,16,0.55) 50%,rgba(43,24,16,0.72) 100%);
         }
-        /* Solid colour fallbacks so background is never blank */
         .slide-1 { background-color: #3D1E0E; }
         .slide-2 { background-color: #2B1810; }
         .hero-content {
@@ -273,20 +269,10 @@
         }
         .about-img-wrap img {
             width: 100%;
-            height: 0;
-            padding-bottom: 200%;  /* 4:5 ratio */
-            object-fit: cover;
-            display: block;
-            border-radius: 8px;
-            position: relative;
-        }
-        /* Fix: use actual img not padding trick */
-        .about-img-wrap img {
-            width: 100%;
             height: 460px;
-            padding-bottom: 0;
             object-fit: cover;
             object-position: center;
+            border-radius: 8px;
         }
         .about-img-badge {
             position: absolute; bottom: 16px; right: 16px;
@@ -316,27 +302,22 @@
         /* ── PRODUCT IMAGE CAROUSEL ── */
         .gallery-section { background: var(--cream-dk); padding: 80px 0; }
         .gallery-header { text-align: center; margin-bottom: 50px; }
-
         .gallery-carousel-wrap {
             position: relative;
             max-width: 960px;
             margin: 0 auto;
         }
-
         .gallery-track-outer {
             overflow: hidden;
             border-radius: 14px;
             height: 600px;
         }
-
         .gallery-track {
             display: flex;
             height: 100%;
             transition: transform .55s cubic-bezier(.4,0,.2,1);
             will-change: transform;
         }
-
-        /* Each "page" shows 2 images side by side */
         .gallery-page {
             min-width: 100%;
             height: 100%;
@@ -344,7 +325,6 @@
             gap: 6px;
             flex-shrink: 0;
         }
-
         .gallery-slide {
             flex: 1;
             height: 100%;
@@ -352,7 +332,6 @@
             overflow: hidden;
             border-radius: 8px;
         }
-
         .gallery-slide img {
             width: 100%;
             height: 100%;
@@ -360,7 +339,6 @@
             object-position: center;
             display: block;
         }
-
         .gallery-slide-caption {
             position: absolute;
             bottom: 0; left: 0; right: 0;
@@ -380,7 +358,6 @@
             font-size: 0.82rem;
             margin-top: 3px;
         }
-
         .gallery-btn {
             position: absolute;
             top: 50%; transform: translateY(-50%);
@@ -403,7 +380,6 @@
         }
         .gallery-prev { left: -22px; }
         .gallery-next { right: -22px; }
-
         .gallery-dots {
             display: flex; justify-content: center; gap: 8px;
             margin-top: 22px;
@@ -415,7 +391,6 @@
             transition: all .3s;
         }
         .gallery-dot.active { width: 28px; background: var(--amber); }
-
         .gallery-counter {
             text-align: center;
             margin-top: 10px;
@@ -423,7 +398,6 @@
             color: var(--muted);
             letter-spacing: 2px;
         }
-
         @media(max-width: 960px) {
             .gallery-track-outer { height: 340px; }
             .gallery-prev { left: -14px; }
@@ -496,24 +470,20 @@
         /* ── TESTIMONIALS SLIDER ── */
         .testimonials { background: var(--cream); }
         .testi-header { text-align: center; margin-bottom: 48px; }
-
         .testi-slider-wrap {
             position: relative;
             max-width: 760px;
             margin: 0 auto;
         }
-
         .testi-track-outer {
             overflow: hidden;
             border-radius: 14px;
         }
-
         .testi-track {
             display: flex;
             transition: transform .5s cubic-bezier(.4,0,.2,1);
             will-change: transform;
         }
-
         .testi-card {
             min-width: 100%;
             background: var(--white);
@@ -524,7 +494,6 @@
             display: flex;
             flex-direction: column;
         }
-
         .testi-quote-icon {
             font-size: 3rem;
             color: var(--amber);
@@ -573,8 +542,6 @@
             font-size: 0.78rem;
             color: var(--muted);
         }
-
-        /* Prev / Next arrows */
         .testi-btn {
             position: absolute;
             top: 50%; transform: translateY(-50%);
@@ -593,8 +560,6 @@
         .testi-btn:hover { background: var(--amber); color: var(--brown); border-color: var(--amber); transform: translateY(-50%) scale(1.08); }
         .testi-prev { left: -22px; }
         .testi-next { right: -22px; }
-
-        /* Dots */
         .testi-dots {
             display: flex; justify-content: center; gap: 8px;
             margin-top: 28px;
@@ -608,7 +573,6 @@
             padding: 0;
         }
         .testi-dot.active { width: 28px; background: var(--amber); }
-
         @media(max-width: 640px) {
             .testi-card { padding: 28px 20px 24px; }
             .testi-prev { left: -14px; }
@@ -797,23 +761,14 @@
         }
         .em-close:hover { color: #C8873A; }
 
-        /* ══════════════════════════════
-           RESPONSIVE BREAKPOINTS
-        ══════════════════════════════ */
-
-        /* Tablet landscape */
         @media(max-width: 1100px) {
             .about-grid { grid-template-columns: 1fr 320px 1fr; gap: 36px; }
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
-            .gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
         }
-
-        /* Tablet portrait */
         @media(max-width: 900px) {
             .nav-links { display: none; }
             .hamburger { display: flex; }
             .section-pad { padding: 60px 0; }
-
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 36px;
@@ -825,56 +780,32 @@
             }
             .about-img-wrap img { height: 380px; }
             .about-img-badge { display: none; }
-
             .testi-slider-wrap { padding: 0 8px; }
-
             .order-wrapper { grid-template-columns: 1fr; gap: 36px; }
-
             .vision-grid { grid-template-columns: repeat(3,1fr); gap: 24px; }
-
-            /* gallery carousel handled by its own media queries above */
-
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
         }
-
-        /* Mobile large */
         @media(max-width: 640px) {
             .container { padding: 0 16px; }
             .section-pad { padding: 48px 0; }
-
             .hero-content { padding: 90px 16px 70px; }
             .hero-cta { flex-direction: column; align-items: center; gap: 10px; }
             .btn-gold, .btn-outline { width: 100%; max-width: 260px; text-align: center; padding: 14px 24px; }
-
             .about-grid { gap: 28px; }
             .about-img-wrap { max-width: 100%; }
             .about-img-wrap img { height: 300px; }
-
             .spec-grid { grid-template-columns: 1fr; gap: 16px; }
             .spec-card { padding: 20px; gap: 14px; }
             .spec-icon-wrap { width: 60px; height: 60px; font-size: 1.4rem; }
-
             .vision-grid { grid-template-columns: 1fr; gap: 24px; }
             .vision-item p { max-width: 100%; }
-
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-
-
             .testi-slider-wrap { padding: 0 4px; }
-
             .order-form { padding: 24px 18px; }
-
             .footer-grid { grid-template-columns: 1fr; gap: 28px; }
             .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
-
             #em-popup { left: 12px; bottom: 12px; }
             .em-toast { width: calc(100vw - 24px); max-width: 320px; }
         }
-
-        /* Mobile small */
         @media(max-width: 380px) {
             .brand-name { font-size: 1.1rem; letter-spacing: 2px; }
             .hero-title { font-size: 2.4rem; }
@@ -888,7 +819,7 @@
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
     <a href="#" class="navbar-brand">
-        <img src="{% static 'homepage/img/logo.jpeg' %}" alt="Ecomonks Logo" onerror="this.style.display='none'">
+        <img src="{% static 'homepage/img/logo.jpeg' %}" alt="Ecomonks Logo" onerror="this.src='https://via.placeholder.com/40x40?text=EC'">
         <span class="brand-name">Ecomonks</span>
     </a>
     <ul class="nav-links">
@@ -923,8 +854,6 @@
 <!-- HERO -->
 <section class="hero" id="hero">
     <div class="hero-slides">
-        <!-- <div class="hero-slide slide-1 active" style="background-image:url('/static/homepage/img/p2.jpeg')"></div>
-        <div class="hero-slide slide-2" style="background-image:url('/static/homepage/img/p3.jpeg')"></div> -->
         <div class="hero-slide slide-1 active" style="background-image:url('{% static "homepage/img/p2.jpeg" %}')"></div>
         <div class="hero-slide slide-2" style="background-image:url('{% static "homepage/img/p3.jpeg" %}')"></div>
     </div>
@@ -955,7 +884,7 @@
                 <a href="#order" class="btn-gold" style="margin-top:16px; display:inline-block;">Make an Order</a>
             </div>
             <div class="about-img-wrap">
-                <img src="{% static 'homepage/img/_01.png' %}" alt="Pure Karpooram" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22460%22%3E%3Crect fill=%22%234A2C1A%22 width=%22400%22 height=%22460%22/%3E%3Ctext x=%22200%22 y=%22240%22 font-size=%2264%22 text-anchor=%22middle%22 fill=%22%23C8873A%22%3E🪔%3C/text%3E%3C/svg%3E'">
+                <img src="{% static 'homepage/img/_01.png' %}" alt="Pure Karpooram" onerror="this.src='https://via.placeholder.com/400x460?text=Pure+Karpooram'">
                 <div class="about-img-badge">
                     <span class="badge-year">2025</span>
                     <span class="badge-text">Est.</span>
@@ -997,16 +926,14 @@
                     <!-- Page 1: Images 1 & 2 -->
                     <div class="gallery-page">
                         <div class="gallery-slide">
-                            <img  src="{% static 'homepage/img/img3.jpeg' %}" alt="Pure Bhimseni Karpooram"
-                                 onerror="this.parentElement.style.background='linear-gradient(135deg,#4A2C1A,#C8873A)';this.style.display='none'">
+                            <img src="{% static 'homepage/img/img3.jpeg' %}" alt="Pure Bhimseni Karpooram" onerror="this.src='https://via.placeholder.com/400x600?text=Product+1'">
                             <div class="gallery-slide-caption">
                                 <span>Pure Karpooram</span>
                                 <p>100% Natural Bhimseni Camphor</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="{% static 'homepage/img/img2.jpeg' %}" alt="Temple Grade Karpooram"
-                                 onerror="this.parentElement.style.background='linear-gradient(135deg,#2B1810,#7A4520)';this.style.display='none'">
+                            <img src="{% static 'homepage/img/img2.jpeg' %}" alt="Temple Grade Karpooram" onerror="this.src='https://via.placeholder.com/400x600?text=Product+2'">
                             <div class="gallery-slide-caption">
                                 <span>Temple Grade</span>
                                 <p>A++ Quality for Pooja &amp; Havan</p>
@@ -1017,16 +944,14 @@
                     <!-- Page 2: Images 3 & 4 -->
                     <div class="gallery-page">
                         <div class="gallery-slide">
-                            <img src="{% static 'homepage/img/img1.jpeg' %}" alt="Natural Karpooram Crystals"
-                                 onerror="this.parentElement.style.background='linear-gradient(135deg,#6B3A1F,#C8873A)';this.style.display='none'">
+                            <img src="{% static 'homepage/img/img1.jpeg' %}" alt="Natural Karpooram Crystals" onerror="this.src='https://via.placeholder.com/400x600?text=Product+3'">
                             <div class="gallery-slide-caption">
                                 <span>Natural &amp; Pure</span>
                                 <p>Crystal Clarity, No Chemicals</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="{% static 'homepage/img/img4.jpeg' %}" alt="Edible Karpooram Pack"
-                                 onerror="this.parentElement.style.background='linear-gradient(135deg,#3D2010,#E8B46A)';this.style.display='none'">
+                            <img src="{% static 'homepage/img/img4.jpeg' %}" alt="Edible Karpooram Pack" onerror="this.src='https://via.placeholder.com/400x600?text=Product+4'">
                             <div class="gallery-slide-caption">
                                 <span>Edible Quality</span>
                                 <p>Safe for Cooking &amp; Aromatherapy</p>
@@ -1266,7 +1191,7 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <div class="footer-brand">
-                    <img src="/static/homepage/img/logo.jpeg" alt="Logo" onerror="this.style.display='none'">
+                    <img src="{% static 'homepage/img/logo.jpeg' %}" alt="Logo" onerror="this.src='https://via.placeholder.com/40x40?text=EC'">
                     <span>ECOMONKS</span>
                 </div>
                 <p>Premium quality edible karpooram crafted with purity, tradition, and authenticity. Trusted by generations.</p>
@@ -1328,7 +1253,7 @@
 <div id="em-popup"></div>
 
 <script>
-    /* ── Navbar scroll ── */
+    /* Navbar scroll */
     const navbar = document.getElementById('navbar');
     const backTop = document.getElementById('backTop');
     window.addEventListener('scroll', () => {
@@ -1336,12 +1261,12 @@
         backTop.classList.toggle('visible', window.scrollY > 300);
     }, { passive: true });
 
-    /* ── Back to top ── */
+    /* Back to top */
     backTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    /* ── Hamburger ── */
+    /* Hamburger */
     const ham = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
     ham.addEventListener('click', () => {
@@ -1355,18 +1280,15 @@
         });
     });
 
-    /* ── Hero slideshow — blink-free ── */
+    /* Hero slideshow */
     const slides = document.querySelectorAll('.hero-slide');
     const dots   = document.querySelectorAll('.dot');
     let current  = 0;
     let slideTimer = null;
 
-    // Disable CSS transitions on all slides until the page has fully painted,
-    // so the initial "active" state is applied instantly without any flicker.
     slides.forEach(s => s.style.transition = 'none');
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-            // Re-enable smooth transitions after first paint
             slides.forEach(s => s.style.transition = '');
         });
     });
@@ -1387,53 +1309,52 @@
 
     slideTimer = setInterval(() => goTo(current + 1), 5000);
 
-    /* ── Gallery Image Carousel ── */
-/* ── Gallery Image Carousel (2-up pages) ── */
-(function(){
-    const track    = document.getElementById('galleryTrack');
-    const dotsWrap = document.getElementById('galleryDots');
-    const counter  = document.getElementById('galleryCounter');
-    const pages    = track.querySelectorAll('.gallery-page');
-    const total    = pages.length;
-    let cur = 0;
-    let autoTimer = null;
+    /* Gallery Image Carousel */
+    (function(){
+        const track    = document.getElementById('galleryTrack');
+        const dotsWrap = document.getElementById('galleryDots');
+        const counter  = document.getElementById('galleryCounter');
+        const pages    = track.querySelectorAll('.gallery-page');
+        const total    = pages.length;
+        let cur = 0;
+        let autoTimer = null;
 
-    pages.forEach((_, i) => {
-        const d = document.createElement('button');
-        d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
-        d.setAttribute('aria-label', 'Page ' + (i + 1));
-        d.addEventListener('click', () => { goTo(i); resetAuto(); });
-        dotsWrap.appendChild(d);
-    });
+        pages.forEach((_, i) => {
+            const d = document.createElement('button');
+            d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+            d.setAttribute('aria-label', 'Page ' + (i + 1));
+            d.addEventListener('click', () => { goTo(i); resetAuto(); });
+            dotsWrap.appendChild(d);
+        });
 
-    function getDots() { return dotsWrap.querySelectorAll('.gallery-dot'); }
+        function getDots() { return dotsWrap.querySelectorAll('.gallery-dot'); }
 
-    function goTo(n) {
-        cur = (n + total) % total;
-        track.style.transform = 'translateX(-' + (cur * 100) + '%)';
-        getDots().forEach((d, i) => d.classList.toggle('active', i === cur));
-        counter.textContent = (cur + 1) + ' / ' + total;
-    }
+        function goTo(n) {
+            cur = (n + total) % total;
+            track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+            getDots().forEach((d, i) => d.classList.toggle('active', i === cur));
+            counter.textContent = (cur + 1) + ' / ' + total;
+        }
 
-    function resetAuto() {
-        clearInterval(autoTimer);
-        autoTimer = setInterval(() => goTo(cur + 1), 4000);
-    }
+        function resetAuto() {
+            clearInterval(autoTimer);
+            autoTimer = setInterval(() => goTo(cur + 1), 4000);
+        }
 
-    document.getElementById('galleryPrev').addEventListener('click', () => { goTo(cur - 1); resetAuto(); });
-    document.getElementById('galleryNext').addEventListener('click', () => { goTo(cur + 1); resetAuto(); });
+        document.getElementById('galleryPrev').addEventListener('click', () => { goTo(cur - 1); resetAuto(); });
+        document.getElementById('galleryNext').addEventListener('click', () => { goTo(cur + 1); resetAuto(); });
 
-    let startX = 0;
-    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', e => {
-        const diff = startX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) { goTo(diff > 0 ? cur + 1 : cur - 1); resetAuto(); }
-    });
+        let startX = 0;
+        track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+        track.addEventListener('touchend', e => {
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) { goTo(diff > 0 ? cur + 1 : cur - 1); resetAuto(); }
+        });
 
-    resetAuto();
-})();
+        resetAuto();
+    })();
 
-    /* ── Testimonial Slider ── */
+    /* Testimonial Slider */
     (function(){
         const track   = document.getElementById('testiTrack');
         const dotsWrap = document.getElementById('testiDots');
@@ -1442,7 +1363,6 @@
         let cur = 0;
         let autoTimer = null;
 
-        // Build dots
         cards.forEach((_, i) => {
             const d = document.createElement('button');
             d.className = 'testi-dot' + (i === 0 ? ' active' : '');
@@ -1467,7 +1387,6 @@
         document.getElementById('testiPrev').addEventListener('click', () => { goSlide(cur - 1); resetAuto(); });
         document.getElementById('testiNext').addEventListener('click', () => { goSlide(cur + 1); resetAuto(); });
 
-        // Touch/swipe support
         let startX = 0;
         track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
         track.addEventListener('touchend', e => {
@@ -1478,7 +1397,7 @@
         resetAuto();
     })();
 
-    /* ── Smooth scroll for anchor links ── */
+    /* Smooth scroll for anchor links */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
             const href = a.getAttribute('href');
@@ -1493,7 +1412,7 @@
         });
     });
 
-    /* ── Social Proof Order Popup ── */
+    /* Social Proof Order Popup */
     (function(){
         const names = ["Suresh","Gokul","Abhi","Arun","Amaya","Sreya","Ammu","Priya",
                         "Rahul","Nidhi","Vishnu","Kavya","Deepa","Arjun","Meera","Ravi",
@@ -1537,7 +1456,6 @@
             setTimeout(() => { if (el && el.parentElement) el.remove(); }, 420);
         }
 
-        /* First popup after 3s, then every 15s */
         setTimeout(function loop() {
             showPopup();
             setTimeout(loop, 15000);
