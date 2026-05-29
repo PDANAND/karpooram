@@ -152,11 +152,4 @@ SECURE_HSTS_PRELOAD = True
 # ALLOWED HOSTS
 # =========================
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'karpooram-git-main-karpooram.vercel.app',
-    'karpooram-karpooram.vercel.app',
-    'www.ecomonks.in',
-    'ecomonks.in',
-]
+ALLOWED_HOSTS = ['*']
