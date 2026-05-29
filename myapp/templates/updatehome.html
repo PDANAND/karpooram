@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -887,7 +888,7 @@
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
     <a href="#" class="navbar-brand">
-        <img src="/static/homepage/img/logo.jpeg" alt="Ecomonks Logo" onerror="this.style.display='none'">
+        <img src="{% static 'homepage/img/logo.jpeg' %}" alt="Ecomonks Logo" onerror="this.style.display='none'">
         <span class="brand-name">Ecomonks</span>
     </a>
     <ul class="nav-links">
@@ -922,8 +923,10 @@
 <!-- HERO -->
 <section class="hero" id="hero">
     <div class="hero-slides">
-        <div class="hero-slide slide-1 active" style="background-image:url('/static/homepage/img/p2.jpeg')"></div>
-        <div class="hero-slide slide-2" style="background-image:url('/static/homepage/img/p3.jpeg')"></div>
+        <!-- <div class="hero-slide slide-1 active" style="background-image:url('/static/homepage/img/p2.jpeg')"></div>
+        <div class="hero-slide slide-2" style="background-image:url('/static/homepage/img/p3.jpeg')"></div> -->
+        <div class="hero-slide slide-1 active" style="background-image:url('{% static "homepage/img/p2.jpeg" %}')"></div>
+        <div class="hero-slide slide-2" style="background-image:url('{% static "homepage/img/p3.jpeg" %}')"></div>
     </div>
     <div class="hero-content">
         <div class="hero-eyebrow">✦ Divya Bhimseni Karpooram ✦</div>
@@ -952,7 +955,7 @@
                 <a href="#order" class="btn-gold" style="margin-top:16px; display:inline-block;">Make an Order</a>
             </div>
             <div class="about-img-wrap">
-                <img src="/static/homepage/img/_01.png" alt="Pure Karpooram" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22460%22%3E%3Crect fill=%22%234A2C1A%22 width=%22400%22 height=%22460%22/%3E%3Ctext x=%22200%22 y=%22240%22 font-size=%2264%22 text-anchor=%22middle%22 fill=%22%23C8873A%22%3E🪔%3C/text%3E%3C/svg%3E'">
+                <img src="{% static 'homepage/img/_01.png' %}" alt="Pure Karpooram" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22460%22%3E%3Crect fill=%22%234A2C1A%22 width=%22400%22 height=%22460%22/%3E%3Ctext x=%22200%22 y=%22240%22 font-size=%2264%22 text-anchor=%22middle%22 fill=%22%23C8873A%22%3E🪔%3C/text%3E%3C/svg%3E'">
                 <div class="about-img-badge">
                     <span class="badge-year">2025</span>
                     <span class="badge-text">Est.</span>
@@ -994,7 +997,7 @@
                     <!-- Page 1: Images 1 & 2 -->
                     <div class="gallery-page">
                         <div class="gallery-slide">
-                            <img src="/static/homepage/img/img3.jpeg" alt="Pure Bhimseni Karpooram"
+                            <img  src="{% static 'homepage/img/img3.jpeg' %}" alt="Pure Bhimseni Karpooram"
                                  onerror="this.parentElement.style.background='linear-gradient(135deg,#4A2C1A,#C8873A)';this.style.display='none'">
                             <div class="gallery-slide-caption">
                                 <span>Pure Karpooram</span>
@@ -1002,7 +1005,7 @@
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="/static/homepage/img/img2.jpeg" alt="Temple Grade Karpooram"
+                            <img src="{% static 'homepage/img/img2.jpeg' %}" alt="Temple Grade Karpooram"
                                  onerror="this.parentElement.style.background='linear-gradient(135deg,#2B1810,#7A4520)';this.style.display='none'">
                             <div class="gallery-slide-caption">
                                 <span>Temple Grade</span>
@@ -1014,7 +1017,7 @@
                     <!-- Page 2: Images 3 & 4 -->
                     <div class="gallery-page">
                         <div class="gallery-slide">
-                            <img src="/static/homepage/img/img1.jpeg" alt="Natural Karpooram Crystals"
+                            <img src="{% static 'homepage/img/img1.jpeg' %}" alt="Natural Karpooram Crystals"
                                  onerror="this.parentElement.style.background='linear-gradient(135deg,#6B3A1F,#C8873A)';this.style.display='none'">
                             <div class="gallery-slide-caption">
                                 <span>Natural &amp; Pure</span>
@@ -1022,7 +1025,7 @@
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="/static/homepage/img/img4.jpeg" alt="Edible Karpooram Pack"
+                            <img src="{% static 'homepage/img/img4.jpeg' %}" alt="Edible Karpooram Pack"
                                  onerror="this.parentElement.style.background='linear-gradient(135deg,#3D2010,#E8B46A)';this.style.display='none'">
                             <div class="gallery-slide-caption">
                                 <span>Edible Quality</span>
