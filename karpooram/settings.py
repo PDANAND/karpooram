@@ -12,17 +12,12 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-&_m%_8-l5yyd4i(*0t2hxk(yj5yuge@x(&c5r%+!r23k8^qe-1"
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -121,3 +116,35 @@ USE_TZ = True
 # STATIC_URL = /"static/"
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+# =========================
+# SECURITY SETTINGS
+# =========================
+
+SECURE_SSL_REDIRECT = not DEBUG
+
+SESSION_COOKIE_SECURE = not DEBUG
+
+CSRF_COOKIE_SECURE = not DEBUG
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+
+# =========================
+# ALLOWED HOSTS
+# =========================
+
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'karpooram-karpooram.vercel.app',
+    'www.ecomonks.in',
+    'ecomonks.in',
+]
