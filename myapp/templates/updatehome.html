@@ -273,7 +273,7 @@
         .about-img-wrap img {
             width: 100%;
             height: 0;
-            padding-bottom: 125%;  /* 4:5 ratio */
+            padding-bottom: 200%;  /* 4:5 ratio */
             object-fit: cover;
             display: block;
             border-radius: 8px;
@@ -313,25 +313,22 @@
         .checklist li i { color: var(--amber); font-size: 0.78rem; flex-shrink: 0; }
 
         /* ── PRODUCT IMAGE CAROUSEL ── */
-        .gallery-section { background: var(--cream-dk); padding: 72px 0; }
-        .gallery-header { text-align: center; margin-bottom: 48px; }
+            /* ── PRODUCT IMAGE CAROUSEL ── */
+        .gallery-section { background: var(--cream-dk); padding: 80px 0; }
+        .gallery-header { text-align: center; margin-bottom: 50px; }
 
         .gallery-carousel-wrap {
             position: relative;
-            max-width: 900px;
+            max-width: 960px;
             margin: 0 auto;
         }
 
-        /* Outer clip */
         .gallery-track-outer {
             overflow: hidden;
             border-radius: 14px;
-            background: var(--brown-md);
-            /* Fixed height so mobile never collapses */
-            height: 480px;
+            height: 420px;
         }
 
-        /* Sliding strip — 4 slides side by side */
         .gallery-track {
             display: flex;
             height: 100%;
@@ -339,12 +336,21 @@
             will-change: transform;
         }
 
-        /* Each slide */
-        .gallery-slide {
+        /* Each "page" shows 2 images side by side */
+        .gallery-page {
             min-width: 100%;
             height: 100%;
-            position: relative;
+            display: flex;
+            gap: 6px;
             flex-shrink: 0;
+        }
+
+        .gallery-slide {
+            flex: 1;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
         }
 
         .gallery-slide img {
@@ -355,27 +361,26 @@
             display: block;
         }
 
-        /* Caption overlay */
         .gallery-slide-caption {
             position: absolute;
             bottom: 0; left: 0; right: 0;
-            padding: 28px 28px 22px;
+            padding: 24px 20px 16px;
             background: linear-gradient(to top, rgba(43,24,16,0.82) 0%, transparent 100%);
+            border-radius: 0 0 8px 8px;
         }
         .gallery-slide-caption span {
             color: var(--amber);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
             letter-spacing: 3px;
             text-transform: uppercase;
         }
         .gallery-slide-caption p {
             color: rgba(255,255,255,0.75);
-            font-size: 0.85rem;
-            margin-top: 4px;
+            font-size: 0.82rem;
+            margin-top: 3px;
         }
 
-        /* Prev / Next arrows */
         .gallery-btn {
             position: absolute;
             top: 50%; transform: translateY(-50%);
@@ -396,10 +401,9 @@
             color: var(--brown);
             transform: translateY(-50%) scale(1.08);
         }
-        .gallery-prev { left: -20px; }
-        .gallery-next { right: -20px; }
+        .gallery-prev { left: -22px; }
+        .gallery-next { right: -22px; }
 
-        /* Dots */
         .gallery-dots {
             display: flex; justify-content: center; gap: 8px;
             margin-top: 22px;
@@ -412,24 +416,22 @@
         }
         .gallery-dot.active { width: 28px; background: var(--amber); }
 
-        /* Slide counter */
         .gallery-counter {
             text-align: center;
-            margin-top: 12px;
+            margin-top: 10px;
             font-size: 0.78rem;
             color: var(--muted);
             letter-spacing: 2px;
         }
 
-        /* Mobile adjustments */
         @media(max-width: 960px) {
-            .gallery-track-outer { height: 400px; }
+            .gallery-track-outer { height: 340px; }
             .gallery-prev { left: -14px; }
             .gallery-next { right: -14px; }
             .gallery-btn { width: 40px; height: 40px; font-size: 0.9rem; }
         }
         @media(max-width: 640px) {
-            .gallery-track-outer { height: 300px; border-radius: 10px; }
+            .gallery-track-outer { height: 220px; border-radius: 10px; }
             .gallery-prev { left: 8px; }
             .gallery-next { right: 8px; }
             .gallery-btn {
@@ -437,12 +439,13 @@
                 background: rgba(43,24,16,0.7);
                 color: var(--amber);
             }
-            .gallery-btn:hover { background: var(--amber); color: var(--brown); }
-            .gallery-slide-caption { padding: 18px 16px 14px; }
-            .gallery-slide-caption span { font-size: 0.72rem; letter-spacing: 2px; }
+            .gallery-page { gap: 4px; }
+            .gallery-slide-caption { padding: 14px 12px 10px; }
+            .gallery-slide-caption span { font-size: 0.7rem; letter-spacing: 1.5px; }
+            .gallery-slide-caption p { display: none; }
         }
         @media(max-width: 400px) {
-            .gallery-track-outer { height: 240px; }
+            .gallery-track-outer { height: 180px; }
         }
 
         /* ── SPECIALITIES ── */
@@ -974,6 +977,7 @@
 </section>
 
 <!-- PRODUCT IMAGE GALLERY -->
+<!-- PRODUCT IMAGE GALLERY -->
 <section class="gallery-section" id="gallery">
     <div class="container">
         <div class="gallery-header">
@@ -982,58 +986,62 @@
         </div>
         <div class="gallery-carousel-wrap">
 
-            <button class="gallery-btn gallery-prev" id="galleryPrev" aria-label="Previous image">
+            <button class="gallery-btn gallery-prev" id="galleryPrev" aria-label="Previous">
                 <i class="fa fa-chevron-left"></i>
             </button>
 
             <div class="gallery-track-outer">
                 <div class="gallery-track" id="galleryTrack">
 
-                    <div class="gallery-slide">
-                        <img src="/static/homepage/img/img1.jpeg" alt="Pure Bhimseni Karpooram"
-                             onerror="this.parentElement.style.background='linear-gradient(135deg,#4A2C1A,#C8873A)';this.style.display='none'">
-                        <div class="gallery-slide-caption">
-                            <span>Pure Karpooram</span>
-                            <p>100% Natural Bhimseni Camphor</p>
+                    <!-- Page 1: Images 1 & 2 -->
+                    <div class="gallery-page">
+                        <div class="gallery-slide">
+                            <img src="/static/homepage/img/img1.jpeg" alt="Pure Bhimseni Karpooram"
+                                 onerror="this.parentElement.style.background='linear-gradient(135deg,#4A2C1A,#C8873A)';this.style.display='none'">
+                            <div class="gallery-slide-caption">
+                                <span>Pure Karpooram</span>
+                                <p>100% Natural Bhimseni Camphor</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="/static/homepage/img/img2.jpeg" alt="Temple Grade Karpooram"
+                                 onerror="this.parentElement.style.background='linear-gradient(135deg,#2B1810,#7A4520)';this.style.display='none'">
+                            <div class="gallery-slide-caption">
+                                <span>Temple Grade</span>
+                                <p>A++ Quality for Pooja &amp; Havan</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="gallery-slide">
-                        <img src="/static/homepage/img/img2.jpeg" alt="Temple Grade Karpooram"
-                             onerror="this.parentElement.style.background='linear-gradient(135deg,#2B1810,#7A4520)';this.style.display='none'">
-                        <div class="gallery-slide-caption">
-                            <span>Temple Grade</span>
-                            <p>A++ Quality Certified for Pooja &amp; Havan</p>
+                    <!-- Page 2: Images 3 & 4 -->
+                    <div class="gallery-page">
+                        <div class="gallery-slide">
+                            <img src="/static/homepage/img/img1.jpeg" alt="Natural Karpooram Crystals"
+                                 onerror="this.parentElement.style.background='linear-gradient(135deg,#6B3A1F,#C8873A)';this.style.display='none'">
+                            <div class="gallery-slide-caption">
+                                <span>Natural &amp; Pure</span>
+                                <p>Crystal Clarity, No Chemicals</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="gallery-slide">
-                        <img src="/static/homepage/img/img1.jpeg" alt="Natural Karpooram Crystals"
-                             onerror="this.parentElement.style.background='linear-gradient(135deg,#6B3A1F,#C8873A)';this.style.display='none'">
-                        <div class="gallery-slide-caption">
-                            <span>Natural &amp; Pure</span>
-                            <p>Crystal Clarity, No Chemicals Added</p>
-                        </div>
-                    </div>
-
-                    <div class="gallery-slide">
-                        <img src="/static/homepage/img/img2.jpeg" alt="Edible Karpooram Pack"
-                             onerror="this.parentElement.style.background='linear-gradient(135deg,#3D2010,#E8B46A)';this.style.display='none'">
-                        <div class="gallery-slide-caption">
-                            <span>Edible Quality</span>
-                            <p>Safe for Cooking, Meditation &amp; Aromatherapy</p>
+                        <div class="gallery-slide">
+                            <img src="/static/homepage/img/img2.jpeg" alt="Edible Karpooram Pack"
+                                 onerror="this.parentElement.style.background='linear-gradient(135deg,#3D2010,#E8B46A)';this.style.display='none'">
+                            <div class="gallery-slide-caption">
+                                <span>Edible Quality</span>
+                                <p>Safe for Cooking &amp; Aromatherapy</p>
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <button class="gallery-btn gallery-next" id="galleryNext" aria-label="Next image">
+            <button class="gallery-btn gallery-next" id="galleryNext" aria-label="Next">
                 <i class="fa fa-chevron-right"></i>
             </button>
 
             <div class="gallery-dots" id="galleryDots"></div>
-            <div class="gallery-counter" id="galleryCounter">1 / 4</div>
+            <div class="gallery-counter" id="galleryCounter">1 / 2</div>
 
         </div>
     </div>
@@ -1379,51 +1387,50 @@
     slideTimer = setInterval(() => goTo(current + 1), 5000);
 
     /* ── Gallery Image Carousel ── */
-    (function(){
-        const track    = document.getElementById('galleryTrack');
-        const dotsWrap = document.getElementById('galleryDots');
-        const counter  = document.getElementById('galleryCounter');
-        const slides   = track.querySelectorAll('.gallery-slide');
-        const total    = slides.length;
-        let cur = 0;
-        let autoTimer = null;
+/* ── Gallery Image Carousel (2-up pages) ── */
+(function(){
+    const track    = document.getElementById('galleryTrack');
+    const dotsWrap = document.getElementById('galleryDots');
+    const counter  = document.getElementById('galleryCounter');
+    const pages    = track.querySelectorAll('.gallery-page');
+    const total    = pages.length;
+    let cur = 0;
+    let autoTimer = null;
 
-        // Build dots
-        slides.forEach((_, i) => {
-            const d = document.createElement('button');
-            d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
-            d.setAttribute('aria-label', 'Image ' + (i + 1));
-            d.addEventListener('click', () => { goTo(i); resetAuto(); });
-            dotsWrap.appendChild(d);
-        });
+    pages.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Page ' + (i + 1));
+        d.addEventListener('click', () => { goTo(i); resetAuto(); });
+        dotsWrap.appendChild(d);
+    });
 
-        function getDots() { return dotsWrap.querySelectorAll('.gallery-dot'); }
+    function getDots() { return dotsWrap.querySelectorAll('.gallery-dot'); }
 
-        function goTo(n) {
-            cur = (n + total) % total;
-            track.style.transform = 'translateX(-' + (cur * 100) + '%)';
-            getDots().forEach((d, i) => d.classList.toggle('active', i === cur));
-            counter.textContent = (cur + 1) + ' / ' + total;
-        }
+    function goTo(n) {
+        cur = (n + total) % total;
+        track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+        getDots().forEach((d, i) => d.classList.toggle('active', i === cur));
+        counter.textContent = (cur + 1) + ' / ' + total;
+    }
 
-        function resetAuto() {
-            clearInterval(autoTimer);
-            autoTimer = setInterval(() => goTo(cur + 1), 4000);
-        }
+    function resetAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => goTo(cur + 1), 4000);
+    }
 
-        document.getElementById('galleryPrev').addEventListener('click', () => { goTo(cur - 1); resetAuto(); });
-        document.getElementById('galleryNext').addEventListener('click', () => { goTo(cur + 1); resetAuto(); });
+    document.getElementById('galleryPrev').addEventListener('click', () => { goTo(cur - 1); resetAuto(); });
+    document.getElementById('galleryNext').addEventListener('click', () => { goTo(cur + 1); resetAuto(); });
 
-        // Touch / swipe support
-        let startX = 0;
-        track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-        track.addEventListener('touchend', e => {
-            const diff = startX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 40) { goTo(diff > 0 ? cur + 1 : cur - 1); resetAuto(); }
-        });
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) { goTo(diff > 0 ? cur + 1 : cur - 1); resetAuto(); }
+    });
 
-        resetAuto();
-    })();
+    resetAuto();
+})();
 
     /* ── Testimonial Slider ── */
     (function(){
